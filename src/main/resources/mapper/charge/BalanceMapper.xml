@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.charge.mapper.BalanceMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.charge.model.Balance" >
+    <id column="BID" property="bid" jdbcType="INTEGER" />
+    <result column="UserNo" property="userno" jdbcType="VARCHAR" />
+    <result column="BalanceDate" property="balancedate" jdbcType="DATE" />
+    <result column="BalanceMoney" property="balancemoney" jdbcType="REAL" />
+    <result column="BillNo" property="billno" jdbcType="VARCHAR" />
+    <result column="BillRealMoney1" property="billrealmoney1" jdbcType="REAL" />
+    <result column="BillRealMoney2" property="billrealmoney2" jdbcType="REAL" />
+    <result column="PayNo" property="payno" jdbcType="VARCHAR" />
+    <result column="PayUseMoney1" property="payusemoney1" jdbcType="REAL" />
+    <result column="PayUseMoney2" property="payusemoney2" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BID, UserNo, BalanceDate, BalanceMoney, BillNo, BillRealMoney1, BillRealMoney2, PayNo, 
+    PayUseMoney1, PayUseMoney2
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from py_balance
+    where BID = #{bid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from py_balance
+    where BID = #{bid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.ssm.charge.model.Balance" >
+    insert into py_balance (BID, UserNo, BalanceDate, 
+      BalanceMoney, BillNo, BillRealMoney1, 
+      BillRealMoney2, PayNo, PayUseMoney1, 
+      PayUseMoney2)
+    values (#{bid,jdbcType=INTEGER}, #{userno,jdbcType=VARCHAR}, #{balancedate,jdbcType=DATE}, 
+      #{balancemoney,jdbcType=REAL}, #{billno,jdbcType=VARCHAR}, #{billrealmoney1,jdbcType=REAL}, 
+      #{billrealmoney2,jdbcType=REAL}, #{payno,jdbcType=VARCHAR}, #{payusemoney1,jdbcType=REAL}, 
+      #{payusemoney2,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ssm.charge.model.Balance" >
+    insert into py_balance
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bid != null" >
+        BID,
+      </if>
+      <if test="userno != null" >
+        UserNo,
+      </if>
+      <if test="balancedate != null" >
+        BalanceDate,
+      </if>
+      <if test="balancemoney != null" >
+        BalanceMoney,
+      </if>
+      <if test="billno != null" >
+        BillNo,
+      </if>
+      <if test="billrealmoney1 != null" >
+        BillRealMoney1,
+      </if>
+      <if test="billrealmoney2 != null" >
+        BillRealMoney2,
+      </if>
+      <if test="payno != null" >
+        PayNo,
+      </if>
+      <if test="payusemoney1 != null" >
+        PayUseMoney1,
+      </if>
+      <if test="payusemoney2 != null" >
+        PayUseMoney2,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bid != null" >
+        #{bid,jdbcType=INTEGER},
+      </if>
+      <if test="userno != null" >
+        #{userno,jdbcType=VARCHAR},
+      </if>
+      <if test="balancedate != null" >
+        #{balancedate,jdbcType=DATE},
+      </if>
+      <if test="balancemoney != null" >
+        #{balancemoney,jdbcType=REAL},
+      </if>
+      <if test="billno != null" >
+        #{billno,jdbcType=VARCHAR},
+      </if>
+      <if test="billrealmoney1 != null" >
+        #{billrealmoney1,jdbcType=REAL},
+      </if>
+      <if test="billrealmoney2 != null" >
+        #{billrealmoney2,jdbcType=REAL},
+      </if>
+      <if test="payno != null" >
+        #{payno,jdbcType=VARCHAR},
+      </if>
+      <if test="payusemoney1 != null" >
+        #{payusemoney1,jdbcType=REAL},
+      </if>
+      <if test="payusemoney2 != null" >
+        #{payusemoney2,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.charge.model.Balance" >
+    update py_balance
+    <set >
+      <if test="userno != null" >
+        UserNo = #{userno,jdbcType=VARCHAR},
+      </if>
+      <if test="balancedate != null" >
+        BalanceDate = #{balancedate,jdbcType=DATE},
+      </if>
+      <if test="balancemoney != null" >
+        BalanceMoney = #{balancemoney,jdbcType=REAL},
+      </if>
+      <if test="billno != null" >
+        BillNo = #{billno,jdbcType=VARCHAR},
+      </if>
+      <if test="billrealmoney1 != null" >
+        BillRealMoney1 = #{billrealmoney1,jdbcType=REAL},
+      </if>
+      <if test="billrealmoney2 != null" >
+        BillRealMoney2 = #{billrealmoney2,jdbcType=REAL},
+      </if>
+      <if test="payno != null" >
+        PayNo = #{payno,jdbcType=VARCHAR},
+      </if>
+      <if test="payusemoney1 != null" >
+        PayUseMoney1 = #{payusemoney1,jdbcType=REAL},
+      </if>
+      <if test="payusemoney2 != null" >
+        PayUseMoney2 = #{payusemoney2,jdbcType=REAL},
+      </if>
+    </set>
+    where BID = #{bid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.charge.model.Balance" >
+    update py_balance
+    set UserNo = #{userno,jdbcType=VARCHAR},
+      BalanceDate = #{balancedate,jdbcType=DATE},
+      BalanceMoney = #{balancemoney,jdbcType=REAL},
+      BillNo = #{billno,jdbcType=VARCHAR},
+      BillRealMoney1 = #{billrealmoney1,jdbcType=REAL},
+      BillRealMoney2 = #{billrealmoney2,jdbcType=REAL},
+      PayNo = #{payno,jdbcType=VARCHAR},
+      PayUseMoney1 = #{payusemoney1,jdbcType=REAL},
+      PayUseMoney2 = #{payusemoney2,jdbcType=REAL}
+    where BID = #{bid,jdbcType=INTEGER}
+  </update>
+</mapper>

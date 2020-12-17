@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.charge.mapper.ArchiveMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.charge.model.Archive" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="EmpID" property="empid" jdbcType="INTEGER" />
+    <result column="InID" property="inid" jdbcType="INTEGER" />
+    <result column="StartNo" property="startno" jdbcType="VARCHAR" />
+    <result column="EndNo" property="endno" jdbcType="VARCHAR" />
+    <result column="Counts" property="counts" jdbcType="INTEGER" />
+    <result column="ArchiveDate" property="archivedate" jdbcType="TIMESTAMP" />
+    <result column="ArchiveEmpID" property="archiveempid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, EmpID, InID, StartNo, EndNo, Counts, ArchiveDate, ArchiveEmpID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from iv_archive
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from iv_archive
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.ssm.charge.model.Archive" >
+    insert into iv_archive (ID, EmpID, InID, 
+      StartNo, EndNo, Counts, 
+      ArchiveDate, ArchiveEmpID)
+    values (#{id,jdbcType=INTEGER}, #{empid,jdbcType=INTEGER}, #{inid,jdbcType=INTEGER}, 
+      #{startno,jdbcType=VARCHAR}, #{endno,jdbcType=VARCHAR}, #{counts,jdbcType=INTEGER}, 
+      #{archivedate,jdbcType=TIMESTAMP}, #{archiveempid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ssm.charge.model.Archive" >
+    insert into iv_archive
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="empid != null" >
+        EmpID,
+      </if>
+      <if test="inid != null" >
+        InID,
+      </if>
+      <if test="startno != null" >
+        StartNo,
+      </if>
+      <if test="endno != null" >
+        EndNo,
+      </if>
+      <if test="counts != null" >
+        Counts,
+      </if>
+      <if test="archivedate != null" >
+        ArchiveDate,
+      </if>
+      <if test="archiveempid != null" >
+        ArchiveEmpID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="empid != null" >
+        #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="inid != null" >
+        #{inid,jdbcType=INTEGER},
+      </if>
+      <if test="startno != null" >
+        #{startno,jdbcType=VARCHAR},
+      </if>
+      <if test="endno != null" >
+        #{endno,jdbcType=VARCHAR},
+      </if>
+      <if test="counts != null" >
+        #{counts,jdbcType=INTEGER},
+      </if>
+      <if test="archivedate != null" >
+        #{archivedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="archiveempid != null" >
+        #{archiveempid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.charge.model.Archive" >
+    update iv_archive
+    <set >
+      <if test="empid != null" >
+        EmpID = #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="inid != null" >
+        InID = #{inid,jdbcType=INTEGER},
+      </if>
+      <if test="startno != null" >
+        StartNo = #{startno,jdbcType=VARCHAR},
+      </if>
+      <if test="endno != null" >
+        EndNo = #{endno,jdbcType=VARCHAR},
+      </if>
+      <if test="counts != null" >
+        Counts = #{counts,jdbcType=INTEGER},
+      </if>
+      <if test="archivedate != null" >
+        ArchiveDate = #{archivedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="archiveempid != null" >
+        ArchiveEmpID = #{archiveempid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.charge.model.Archive" >
+    update iv_archive
+    set EmpID = #{empid,jdbcType=INTEGER},
+      InID = #{inid,jdbcType=INTEGER},
+      StartNo = #{startno,jdbcType=VARCHAR},
+      EndNo = #{endno,jdbcType=VARCHAR},
+      Counts = #{counts,jdbcType=INTEGER},
+      ArchiveDate = #{archivedate,jdbcType=TIMESTAMP},
+      ArchiveEmpID = #{archiveempid,jdbcType=INTEGER}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

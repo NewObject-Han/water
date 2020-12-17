@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.charge.mapper.UserhistoryMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.charge.model.Userhistory" >
+    <id column="UID" property="uid" jdbcType="INTEGER" />
+    <result column="UserNo" property="userno" jdbcType="VARCHAR" />
+    <result column="Typee" property="typee" jdbcType="INTEGER" />
+    <result column="OrderNo" property="orderno" jdbcType="VARCHAR" />
+    <result column="Datee" property="datee" jdbcType="TIMESTAMP" />
+    <result column="PreValue" property="prevalue" jdbcType="INTEGER" />
+    <result column="CurValue" property="curvalue" jdbcType="INTEGER" />
+    <result column="Amount" property="amount" jdbcType="INTEGER" />
+    <result column="BillMoney" property="billmoney" jdbcType="REAL" />
+    <result column="PayMoney" property="paymoney" jdbcType="REAL" />
+    <result column="UserMoney" property="usermoney" jdbcType="REAL" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    UID, UserNo, Typee, OrderNo, Datee, PreValue, CurValue, Amount, BillMoney, PayMoney, 
+    UserMoney
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from py_userhistory
+    where UID = #{uid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from py_userhistory
+    where UID = #{uid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.ssm.charge.model.Userhistory" >
+    insert into py_userhistory (UID, UserNo, Typee, 
+      OrderNo, Datee, PreValue, 
+      CurValue, Amount, BillMoney, 
+      PayMoney, UserMoney)
+    values (#{uid,jdbcType=INTEGER}, #{userno,jdbcType=VARCHAR}, #{typee,jdbcType=INTEGER}, 
+      #{orderno,jdbcType=VARCHAR}, #{datee,jdbcType=TIMESTAMP}, #{prevalue,jdbcType=INTEGER}, 
+      #{curvalue,jdbcType=INTEGER}, #{amount,jdbcType=INTEGER}, #{billmoney,jdbcType=REAL}, 
+      #{paymoney,jdbcType=REAL}, #{usermoney,jdbcType=REAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ssm.charge.model.Userhistory" >
+    insert into py_userhistory
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        UID,
+      </if>
+      <if test="userno != null" >
+        UserNo,
+      </if>
+      <if test="typee != null" >
+        Typee,
+      </if>
+      <if test="orderno != null" >
+        OrderNo,
+      </if>
+      <if test="datee != null" >
+        Datee,
+      </if>
+      <if test="prevalue != null" >
+        PreValue,
+      </if>
+      <if test="curvalue != null" >
+        CurValue,
+      </if>
+      <if test="amount != null" >
+        Amount,
+      </if>
+      <if test="billmoney != null" >
+        BillMoney,
+      </if>
+      <if test="paymoney != null" >
+        PayMoney,
+      </if>
+      <if test="usermoney != null" >
+        UserMoney,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+      <if test="userno != null" >
+        #{userno,jdbcType=VARCHAR},
+      </if>
+      <if test="typee != null" >
+        #{typee,jdbcType=INTEGER},
+      </if>
+      <if test="orderno != null" >
+        #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="datee != null" >
+        #{datee,jdbcType=TIMESTAMP},
+      </if>
+      <if test="prevalue != null" >
+        #{prevalue,jdbcType=INTEGER},
+      </if>
+      <if test="curvalue != null" >
+        #{curvalue,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="billmoney != null" >
+        #{billmoney,jdbcType=REAL},
+      </if>
+      <if test="paymoney != null" >
+        #{paymoney,jdbcType=REAL},
+      </if>
+      <if test="usermoney != null" >
+        #{usermoney,jdbcType=REAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.charge.model.Userhistory" >
+    update py_userhistory
+    <set >
+      <if test="userno != null" >
+        UserNo = #{userno,jdbcType=VARCHAR},
+      </if>
+      <if test="typee != null" >
+        Typee = #{typee,jdbcType=INTEGER},
+      </if>
+      <if test="orderno != null" >
+        OrderNo = #{orderno,jdbcType=VARCHAR},
+      </if>
+      <if test="datee != null" >
+        Datee = #{datee,jdbcType=TIMESTAMP},
+      </if>
+      <if test="prevalue != null" >
+        PreValue = #{prevalue,jdbcType=INTEGER},
+      </if>
+      <if test="curvalue != null" >
+        CurValue = #{curvalue,jdbcType=INTEGER},
+      </if>
+      <if test="amount != null" >
+        Amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="billmoney != null" >
+        BillMoney = #{billmoney,jdbcType=REAL},
+      </if>
+      <if test="paymoney != null" >
+        PayMoney = #{paymoney,jdbcType=REAL},
+      </if>
+      <if test="usermoney != null" >
+        UserMoney = #{usermoney,jdbcType=REAL},
+      </if>
+    </set>
+    where UID = #{uid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.charge.model.Userhistory" >
+    update py_userhistory
+    set UserNo = #{userno,jdbcType=VARCHAR},
+      Typee = #{typee,jdbcType=INTEGER},
+      OrderNo = #{orderno,jdbcType=VARCHAR},
+      Datee = #{datee,jdbcType=TIMESTAMP},
+      PreValue = #{prevalue,jdbcType=INTEGER},
+      CurValue = #{curvalue,jdbcType=INTEGER},
+      Amount = #{amount,jdbcType=INTEGER},
+      BillMoney = #{billmoney,jdbcType=REAL},
+      PayMoney = #{paymoney,jdbcType=REAL},
+      UserMoney = #{usermoney,jdbcType=REAL}
+    where UID = #{uid,jdbcType=INTEGER}
+  </update>
+</mapper>

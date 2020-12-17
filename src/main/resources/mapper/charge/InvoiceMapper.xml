@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.charge.mapper.InvoiceMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.charge.model.Invoice" >
+    <id column="InvoiceNo" property="invoiceno" jdbcType="VARCHAR" />
+    <result column="InvoiceType" property="invoicetype" jdbcType="INTEGER" />
+    <result column="EmpID" property="empid" jdbcType="INTEGER" />
+    <result column="InID" property="inid" jdbcType="INTEGER" />
+    <result column="OutID" property="outid" jdbcType="INTEGER" />
+    <result column="ArchiveID" property="archiveid" jdbcType="INTEGER" />
+    <result column="Used" property="used" jdbcType="BIGINT" />
+    <result column="UseDate" property="usedate" jdbcType="TIMESTAMP" />
+    <result column="Invalid" property="invalid" jdbcType="BIGINT" />
+    <result column="InvalidDate" property="invaliddate" jdbcType="TIMESTAMP" />
+    <result column="Archived" property="archived" jdbcType="BIGINT" />
+    <result column="ArchiveDate" property="archivedate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    InvoiceNo, InvoiceType, EmpID, InID, OutID, ArchiveID, Used, UseDate, Invalid, InvalidDate, 
+    Archived, ArchiveDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from iv_invoice
+    where InvoiceNo = #{invoiceno,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from iv_invoice
+    where InvoiceNo = #{invoiceno,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.zking.ssm.charge.model.Invoice" >
+    insert into iv_invoice (InvoiceNo, InvoiceType, EmpID, 
+      InID, OutID, ArchiveID, 
+      Used, UseDate, Invalid, 
+      InvalidDate, Archived, ArchiveDate
+      )
+    values (#{invoiceno,jdbcType=VARCHAR}, #{invoicetype,jdbcType=INTEGER}, #{empid,jdbcType=INTEGER}, 
+      #{inid,jdbcType=INTEGER}, #{outid,jdbcType=INTEGER}, #{archiveid,jdbcType=INTEGER}, 
+      #{used,jdbcType=BIGINT}, #{usedate,jdbcType=TIMESTAMP}, #{invalid,jdbcType=BIGINT}, 
+      #{invaliddate,jdbcType=TIMESTAMP}, #{archived,jdbcType=BIGINT}, #{archivedate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ssm.charge.model.Invoice" >
+    insert into iv_invoice
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="invoiceno != null" >
+        InvoiceNo,
+      </if>
+      <if test="invoicetype != null" >
+        InvoiceType,
+      </if>
+      <if test="empid != null" >
+        EmpID,
+      </if>
+      <if test="inid != null" >
+        InID,
+      </if>
+      <if test="outid != null" >
+        OutID,
+      </if>
+      <if test="archiveid != null" >
+        ArchiveID,
+      </if>
+      <if test="used != null" >
+        Used,
+      </if>
+      <if test="usedate != null" >
+        UseDate,
+      </if>
+      <if test="invalid != null" >
+        Invalid,
+      </if>
+      <if test="invaliddate != null" >
+        InvalidDate,
+      </if>
+      <if test="archived != null" >
+        Archived,
+      </if>
+      <if test="archivedate != null" >
+        ArchiveDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="invoiceno != null" >
+        #{invoiceno,jdbcType=VARCHAR},
+      </if>
+      <if test="invoicetype != null" >
+        #{invoicetype,jdbcType=INTEGER},
+      </if>
+      <if test="empid != null" >
+        #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="inid != null" >
+        #{inid,jdbcType=INTEGER},
+      </if>
+      <if test="outid != null" >
+        #{outid,jdbcType=INTEGER},
+      </if>
+      <if test="archiveid != null" >
+        #{archiveid,jdbcType=INTEGER},
+      </if>
+      <if test="used != null" >
+        #{used,jdbcType=BIGINT},
+      </if>
+      <if test="usedate != null" >
+        #{usedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invalid != null" >
+        #{invalid,jdbcType=BIGINT},
+      </if>
+      <if test="invaliddate != null" >
+        #{invaliddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="archived != null" >
+        #{archived,jdbcType=BIGINT},
+      </if>
+      <if test="archivedate != null" >
+        #{archivedate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.charge.model.Invoice" >
+    update iv_invoice
+    <set >
+      <if test="invoicetype != null" >
+        InvoiceType = #{invoicetype,jdbcType=INTEGER},
+      </if>
+      <if test="empid != null" >
+        EmpID = #{empid,jdbcType=INTEGER},
+      </if>
+      <if test="inid != null" >
+        InID = #{inid,jdbcType=INTEGER},
+      </if>
+      <if test="outid != null" >
+        OutID = #{outid,jdbcType=INTEGER},
+      </if>
+      <if test="archiveid != null" >
+        ArchiveID = #{archiveid,jdbcType=INTEGER},
+      </if>
+      <if test="used != null" >
+        Used = #{used,jdbcType=BIGINT},
+      </if>
+      <if test="usedate != null" >
+        UseDate = #{usedate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="invalid != null" >
+        Invalid = #{invalid,jdbcType=BIGINT},
+      </if>
+      <if test="invaliddate != null" >
+        InvalidDate = #{invaliddate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="archived != null" >
+        Archived = #{archived,jdbcType=BIGINT},
+      </if>
+      <if test="archivedate != null" >
+        ArchiveDate = #{archivedate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where InvoiceNo = #{invoiceno,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.charge.model.Invoice" >
+    update iv_invoice
+    set InvoiceType = #{invoicetype,jdbcType=INTEGER},
+      EmpID = #{empid,jdbcType=INTEGER},
+      InID = #{inid,jdbcType=INTEGER},
+      OutID = #{outid,jdbcType=INTEGER},
+      ArchiveID = #{archiveid,jdbcType=INTEGER},
+      Used = #{used,jdbcType=BIGINT},
+      UseDate = #{usedate,jdbcType=TIMESTAMP},
+      Invalid = #{invalid,jdbcType=BIGINT},
+      InvalidDate = #{invaliddate,jdbcType=TIMESTAMP},
+      Archived = #{archived,jdbcType=BIGINT},
+      ArchiveDate = #{archivedate,jdbcType=TIMESTAMP}
+    where InvoiceNo = #{invoiceno,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.charge.mapper.BilldetailMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.charge.model.Billdetail" >
+    <id column="BID" property="bid" jdbcType="INTEGER" />
+    <result column="BillNo" property="billno" jdbcType="VARCHAR" />
+    <result column="UserNo" property="userno" jdbcType="VARCHAR" />
+    <result column="CostTypeCode" property="costtypecode" jdbcType="VARCHAR" />
+    <result column="Amount" property="amount" jdbcType="INTEGER" />
+    <result column="Price" property="price" jdbcType="REAL" />
+    <result column="DetailMoney" property="detailmoney" jdbcType="REAL" />
+    <result column="RealMoney" property="realmoney" jdbcType="REAL" />
+    <result column="Balance" property="balance" jdbcType="BIGINT" />
+    <result column="BalanceDate" property="balancedate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    BID, BillNo, UserNo, CostTypeCode, Amount, Price, DetailMoney, RealMoney, Balance, 
+    BalanceDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from py_billdetail
+    where BID = #{bid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from py_billdetail
+    where BID = #{bid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.ssm.charge.model.Billdetail" >
+    insert into py_billdetail (BID, BillNo, UserNo, 
+      CostTypeCode, Amount, Price, 
+      DetailMoney, RealMoney, Balance, 
+      BalanceDate)
+    values (#{bid,jdbcType=INTEGER}, #{billno,jdbcType=VARCHAR}, #{userno,jdbcType=VARCHAR}, 
+      #{costtypecode,jdbcType=VARCHAR}, #{amount,jdbcType=INTEGER}, #{price,jdbcType=REAL}, 
+      #{detailmoney,jdbcType=REAL}, #{realmoney,jdbcType=REAL}, #{balance,jdbcType=BIGINT}, 
+      #{balancedate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ssm.charge.model.Billdetail" >
+    insert into py_billdetail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="bid != null" >
+        BID,
+      </if>
+      <if test="billno != null" >
+        BillNo,
+      </if>
+      <if test="userno != null" >
+        UserNo,
+      </if>
+      <if test="costtypecode != null" >
+        CostTypeCode,
+      </if>
+      <if test="amount != null" >
+        Amount,
+      </if>
+      <if test="price != null" >
+        Price,
+      </if>
+      <if test="detailmoney != null" >
+        DetailMoney,
+      </if>
+      <if test="realmoney != null" >
+        RealMoney,
+      </if>
+      <if test="balance != null" >
+        Balance,
+      </if>
+      <if test="balancedate != null" >
+        BalanceDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="bid != null" >
+        #{bid,jdbcType=INTEGER},
+      </if>
+      <if test="billno != null" >
+        #{billno,jdbcType=VARCHAR},
+      </if>
+      <if test="userno != null" >
+        #{userno,jdbcType=VARCHAR},
+      </if>
+      <if test="costtypecode != null" >
+        #{costtypecode,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=REAL},
+      </if>
+      <if test="detailmoney != null" >
+        #{detailmoney,jdbcType=REAL},
+      </if>
+      <if test="realmoney != null" >
+        #{realmoney,jdbcType=REAL},
+      </if>
+      <if test="balance != null" >
+        #{balance,jdbcType=BIGINT},
+      </if>
+      <if test="balancedate != null" >
+        #{balancedate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.charge.model.Billdetail" >
+    update py_billdetail
+    <set >
+      <if test="billno != null" >
+        BillNo = #{billno,jdbcType=VARCHAR},
+      </if>
+      <if test="userno != null" >
+        UserNo = #{userno,jdbcType=VARCHAR},
+      </if>
+      <if test="costtypecode != null" >
+        CostTypeCode = #{costtypecode,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        Amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        Price = #{price,jdbcType=REAL},
+      </if>
+      <if test="detailmoney != null" >
+        DetailMoney = #{detailmoney,jdbcType=REAL},
+      </if>
+      <if test="realmoney != null" >
+        RealMoney = #{realmoney,jdbcType=REAL},
+      </if>
+      <if test="balance != null" >
+        Balance = #{balance,jdbcType=BIGINT},
+      </if>
+      <if test="balancedate != null" >
+        BalanceDate = #{balancedate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where BID = #{bid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.charge.model.Billdetail" >
+    update py_billdetail
+    set BillNo = #{billno,jdbcType=VARCHAR},
+      UserNo = #{userno,jdbcType=VARCHAR},
+      CostTypeCode = #{costtypecode,jdbcType=VARCHAR},
+      Amount = #{amount,jdbcType=INTEGER},
+      Price = #{price,jdbcType=REAL},
+      DetailMoney = #{detailmoney,jdbcType=REAL},
+      RealMoney = #{realmoney,jdbcType=REAL},
+      Balance = #{balance,jdbcType=BIGINT},
+      BalanceDate = #{balancedate,jdbcType=TIMESTAMP}
+    where BID = #{bid,jdbcType=INTEGER}
+  </update>
+</mapper>
