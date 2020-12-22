@@ -2,6 +2,8 @@ package com.zking.ssm.charge.mapper;
 
 import com.zking.ssm.charge.model.Bill;
 
+import java.util.List;
+
 public interface BillMapper {
     int deleteByPrimaryKey(String billno);
 
@@ -14,4 +16,6 @@ public interface BillMapper {
     int updateByPrimaryKeySelective(Bill record);
 
     int updateByPrimaryKey(Bill record);
+
+    List queryBalance(String userno);
 }

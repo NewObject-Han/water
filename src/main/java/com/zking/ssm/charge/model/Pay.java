@@ -1,7 +1,9 @@
 package com.zking.ssm.charge.model;
 
-import java.util.Date;
+import lombok.Data;
 
+import java.util.Date;
+@Data
 public class Pay {
     private String payno;
 

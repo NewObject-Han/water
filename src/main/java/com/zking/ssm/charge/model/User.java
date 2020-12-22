@@ -1,6 +1,8 @@
 package com.zking.ssm.charge.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -12,6 +14,7 @@ public class User {
 
     private String abc;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date createdate;
 
     private String address;
@@ -41,7 +44,7 @@ public class User {
     private String pwd;
 
     private String contractnum;
-
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
     private Date contractdate;
 
     private Integer volumeid;

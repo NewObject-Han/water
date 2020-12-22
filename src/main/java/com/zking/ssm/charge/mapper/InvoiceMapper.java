@@ -2,6 +2,8 @@ package com.zking.ssm.charge.mapper;
 
 import com.zking.ssm.charge.model.Invoice;
 
+import java.util.List;
+
 public interface InvoiceMapper {
     int deleteByPrimaryKey(String invoiceno);
 
@@ -14,4 +16,6 @@ public interface InvoiceMapper {
     int updateByPrimaryKeySelective(Invoice record);
 
     int updateByPrimaryKey(Invoice record);
+
+    List queryList(Invoice record);
 }

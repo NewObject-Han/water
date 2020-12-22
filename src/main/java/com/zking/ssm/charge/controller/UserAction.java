@@ -20,14 +20,31 @@ import java.util.List;
 public class UserAction {
     @Autowired
     private IChargeUserService iChargeUserService;
-    private User user=new User();
 
     @RequestMapping("/queryUser")
     @ResponseBody
-    public PageInfo queryUser(String pageNum,String pageSize,User user){
-        PageHelper.startPage(Integer.valueOf(pageNum),Integer.valueOf(pageNum));
+    public PageInfo queryUser(String pageNum, String pageSize, User user) {
+        PageHelper.startPage(Integer.valueOf(pageNum), Integer.valueOf(pageSize));
+
         List list = iChargeUserService.queryUserList(user);
-        PageInfo pageInfo=new PageInfo(list);
-        return  pageInfo;
+
+        PageInfo pageInfo = new PageInfo(list);
+
+        return pageInfo;
+    }
+
+
+    @RequestMapping("/getUser")
+    @ResponseBody
+    public User getUser(String id) {
+        User user = iChargeUserService.selectByPrimaryKey(id);
+        return user;
+    }
+
+    @RequestMapping("editUser")
+    @ResponseBody
+    public int editUser(User user) {
+        int i = iChargeUserService.updateByPrimaryKeySelective(user);
+        return i;
     }
 }

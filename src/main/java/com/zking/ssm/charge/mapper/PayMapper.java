@@ -2,6 +2,8 @@ package com.zking.ssm.charge.mapper;
 
 import com.zking.ssm.charge.model.Pay;
 
+import java.util.List;
+
 public interface PayMapper {
     int deleteByPrimaryKey(String payno);
 
@@ -14,4 +16,7 @@ public interface PayMapper {
     int updateByPrimaryKeySelective(Pay record);
 
     int updateByPrimaryKey(Pay record);
+
+
+    List selectHistory(Pay record);
 }
