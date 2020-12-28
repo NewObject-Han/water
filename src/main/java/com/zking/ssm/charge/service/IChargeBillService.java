@@ -1,6 +1,7 @@
 package com.zking.ssm.charge.service;
 
 import com.zking.ssm.charge.model.Bill;
+import com.zking.ssm.charge.model.BillJOIN;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -23,5 +24,11 @@ public interface IChargeBillService {
 
     int updateByPrimaryKey(Bill record);
 
+    Bill getByPrimaryKey(Bill record);
+
     List queryBalance(String userid);
+
+    List<BillJOIN> queryReadJOIN(Bill record);
+
+    List<BillJOIN> selectByJoin();
 }

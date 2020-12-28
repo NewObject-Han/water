@@ -24,4 +24,6 @@ public interface IChargePayService {
     int updateByPrimaryKey(Pay record);
 
     List selectHistory(Pay record);
+
+    List queryUserPay();
 }

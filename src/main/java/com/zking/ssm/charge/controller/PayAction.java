@@ -52,11 +52,20 @@ public class PayAction {
 
 
     @ResponseBody
-    @RequestMapping("SelectHistory")
+    @RequestMapping("/SelectHistory")
     public PageInfo SelectHistory(Pay pay) {
         PageHelper.startPage(1,8);
         List list = chargePayService.selectHistory(pay);
         PageInfo pageInfo = new PageInfo(list);
+        return pageInfo;
+    }
+
+    @ResponseBody
+    @RequestMapping("/queryPay")
+    public PageInfo queryPay(String pageNum,String pageSize){
+        PageHelper.startPage(Integer.valueOf(pageNum),Integer.valueOf(pageSize));
+        List list = chargePayService.queryUserPay();
+        PageInfo pageInfo=new PageInfo(list);
         return pageInfo;
     }
 }

@@ -53,4 +53,9 @@ public class IChargePayServiceImpl implements IChargePayService {
     public List selectHistory(Pay record) {
         return iChargePayService.selectHistory(record);
     }
+
+    @Override
+    public List queryUserPay() {
+        return iChargePayService.queryUserPay();
+    }
 }

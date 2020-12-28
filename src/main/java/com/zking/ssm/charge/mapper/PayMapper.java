@@ -19,4 +19,6 @@ public interface PayMapper {
 
 
     List selectHistory(Pay record);
+
+    List queryUserPay();
 }

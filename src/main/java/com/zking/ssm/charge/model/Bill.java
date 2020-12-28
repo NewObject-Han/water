@@ -21,5 +21,5 @@ public class Bill {
 
     private Date balancedate;
 
-
+    private Read read;
 }

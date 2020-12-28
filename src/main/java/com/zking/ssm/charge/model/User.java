@@ -14,7 +14,7 @@ public class User {
 
     private String abc;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date createdate;
 
     private String address;
@@ -44,7 +44,7 @@ public class User {
     private String pwd;
 
     private String contractnum;
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GMT+8")
+    @JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8")
     private Date contractdate;
 
     private Integer volumeid;

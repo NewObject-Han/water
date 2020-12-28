@@ -2,6 +2,7 @@ package com.zking.ssm.charge.service.impl;
 
 import com.zking.ssm.charge.mapper.BillMapper;
 import com.zking.ssm.charge.model.Bill;
+import com.zking.ssm.charge.model.BillJOIN;
 import com.zking.ssm.charge.service.IChargeBillService;
 import org.aspectj.lang.annotation.Aspect;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +52,22 @@ public class IChargeBillServiceImpl implements IChargeBillService {
     }
 
     @Override
+    public Bill getByPrimaryKey(Bill record) {
+        return billMapper.getByPrimaryKey(record);
+    }
+
+    @Override
     public List queryBalance(String userid) {
         return billMapper.queryBalance(userid);
+    }
+
+    @Override
+    public List<BillJOIN> queryReadJOIN(Bill record) {
+        return billMapper.queryReadJOIN(record);
+    }
+
+    @Override
+    public List<BillJOIN> selectByJoin() {
+        return billMapper.selectByJoin();
     }
 }

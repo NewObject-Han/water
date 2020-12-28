@@ -32,8 +32,6 @@ public class UserAction {
 
         return pageInfo;
     }
-
-
     @RequestMapping("/getUser")
     @ResponseBody
     public User getUser(String id) {
@@ -41,7 +39,7 @@ public class UserAction {
         return user;
     }
 
-    @RequestMapping("editUser")
+    @RequestMapping("/editUser")
     @ResponseBody
     public int editUser(User user) {
         int i = iChargeUserService.updateByPrimaryKeySelective(user);
