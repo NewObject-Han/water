@@ -1,29 +1,40 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.zking.ssm.charge.mapper.IninvoiceMapper" >
-  <resultMap id="BaseResultMap" type="com.zking.ssm.charge.model.Ininvoice" >
-    <id column="ID" property="id" jdbcType="INTEGER" />
-    <result column="InvoiceType" property="invoicetype" jdbcType="INTEGER" />
-    <result column="StartNo" property="startno" jdbcType="VARCHAR" />
-    <result column="EndNo" property="endno" jdbcType="VARCHAR" />
-    <result column="Counts" property="counts" jdbcType="INTEGER" />
-    <result column="InDate" property="indate" jdbcType="TIMESTAMP" />
-    <result column="InEmpID" property="inempid" jdbcType="INTEGER" />
-  </resultMap>
-  <sql id="Base_Column_List" >
+<mapper namespace="com.zking.ssm.charge.mapper.IninvoiceMapper">
+    <resultMap id="BaseResultMap" type="com.zking.ssm.charge.model.Ininvoice">
+        <id column="ID" property="id" jdbcType="INTEGER"/>
+        <result column="InvoiceType" property="invoicetype" jdbcType="INTEGER"/>
+        <result column="StartNo" property="startno" jdbcType="VARCHAR"/>
+        <result column="EndNo" property="endno" jdbcType="VARCHAR"/>
+        <result column="Counts" property="counts" jdbcType="INTEGER"/>
+        <result column="InDate" property="indate" jdbcType="TIMESTAMP"/>
+        <result column="InEmpID" property="inempid" jdbcType="INTEGER"/>
+    </resultMap>
+    <sql id="Base_Column_List">
     ID, InvoiceType, StartNo, EndNo, Counts, InDate, InEmpID
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from iv_ininvoice
-    where ID = #{id,jdbcType=INTEGER}
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from iv_ininvoice
+        where ID = #{id,jdbcType=INTEGER}
+    </select>
+    <select id="selective" resultMap="BaseResultMap" resultType="java.util.List">
+    SELECT
+	*
+FROM
+	iv_ininvoice
+WHERE
+	#{Start,jdbcType=INTEGER} BETWEEN iv_ininvoice.StartNo
+	AND iv_ininvoice.EndNo
+	OR  #{End,jdbcType=INTEGER} BETWEEN iv_ininvoice.StartNo
+	AND iv_ininvoice.EndNo
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from iv_ininvoice
     where ID = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.zking.ssm.charge.model.Ininvoice" >
+    <insert id="insert" parameterType="com.zking.ssm.charge.model.Ininvoice">
     insert into iv_ininvoice (ID, InvoiceType, StartNo, 
       EndNo, Counts, InDate, 
       InEmpID)
@@ -31,80 +42,80 @@
       #{endno,jdbcType=VARCHAR}, #{counts,jdbcType=INTEGER}, #{indate,jdbcType=TIMESTAMP}, 
       #{inempid,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.zking.ssm.charge.model.Ininvoice" >
-    insert into iv_ininvoice
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        ID,
-      </if>
-      <if test="invoicetype != null" >
-        InvoiceType,
-      </if>
-      <if test="startno != null" >
-        StartNo,
-      </if>
-      <if test="endno != null" >
-        EndNo,
-      </if>
-      <if test="counts != null" >
-        Counts,
-      </if>
-      <if test="indate != null" >
-        InDate,
-      </if>
-      <if test="inempid != null" >
-        InEmpID,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
-        #{id,jdbcType=INTEGER},
-      </if>
-      <if test="invoicetype != null" >
-        #{invoicetype,jdbcType=INTEGER},
-      </if>
-      <if test="startno != null" >
-        #{startno,jdbcType=VARCHAR},
-      </if>
-      <if test="endno != null" >
-        #{endno,jdbcType=VARCHAR},
-      </if>
-      <if test="counts != null" >
-        #{counts,jdbcType=INTEGER},
-      </if>
-      <if test="indate != null" >
-        #{indate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="inempid != null" >
-        #{inempid,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.charge.model.Ininvoice" >
-    update iv_ininvoice
-    <set >
-      <if test="invoicetype != null" >
-        InvoiceType = #{invoicetype,jdbcType=INTEGER},
-      </if>
-      <if test="startno != null" >
-        StartNo = #{startno,jdbcType=VARCHAR},
-      </if>
-      <if test="endno != null" >
-        EndNo = #{endno,jdbcType=VARCHAR},
-      </if>
-      <if test="counts != null" >
-        Counts = #{counts,jdbcType=INTEGER},
-      </if>
-      <if test="indate != null" >
-        InDate = #{indate,jdbcType=TIMESTAMP},
-      </if>
-      <if test="inempid != null" >
-        InEmpID = #{inempid,jdbcType=INTEGER},
-      </if>
-    </set>
-    where ID = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.charge.model.Ininvoice" >
+    <insert id="insertSelective" parameterType="com.zking.ssm.charge.model.Ininvoice">
+        insert into iv_ininvoice
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                ID,
+            </if>
+            <if test="invoicetype != null">
+                InvoiceType,
+            </if>
+            <if test="startno != null">
+                StartNo,
+            </if>
+            <if test="endno != null">
+                EndNo,
+            </if>
+            <if test="counts != null">
+                Counts,
+            </if>
+            <if test="indate != null">
+                InDate,
+            </if>
+            <if test="inempid != null">
+                InEmpID,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="invoicetype != null">
+                #{invoicetype,jdbcType=INTEGER},
+            </if>
+            <if test="startno != null">
+                #{startno,jdbcType=VARCHAR},
+            </if>
+            <if test="endno != null">
+                #{endno,jdbcType=VARCHAR},
+            </if>
+            <if test="counts != null">
+                #{counts,jdbcType=INTEGER},
+            </if>
+            <if test="indate != null">
+                #{indate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="inempid != null">
+                #{inempid,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.charge.model.Ininvoice">
+        update iv_ininvoice
+        <set>
+            <if test="invoicetype != null">
+                InvoiceType = #{invoicetype,jdbcType=INTEGER},
+            </if>
+            <if test="startno != null">
+                StartNo = #{startno,jdbcType=VARCHAR},
+            </if>
+            <if test="endno != null">
+                EndNo = #{endno,jdbcType=VARCHAR},
+            </if>
+            <if test="counts != null">
+                Counts = #{counts,jdbcType=INTEGER},
+            </if>
+            <if test="indate != null">
+                InDate = #{indate,jdbcType=TIMESTAMP},
+            </if>
+            <if test="inempid != null">
+                InEmpID = #{inempid,jdbcType=INTEGER},
+            </if>
+        </set>
+        where ID = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.zking.ssm.charge.model.Ininvoice">
     update iv_ininvoice
     set InvoiceType = #{invoicetype,jdbcType=INTEGER},
       StartNo = #{startno,jdbcType=VARCHAR},

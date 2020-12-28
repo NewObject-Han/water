@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zking.ssm.charge.mapper.ReadMapper" >
+  <resultMap id="BaseResultMap" type="com.zking.ssm.charge.model.Read" >
+    <id column="RID" property="rid" jdbcType="INTEGER" />
+    <result column="ReadYear" property="readyear" jdbcType="INTEGER" />
+    <result column="ReadMonth" property="readmonth" jdbcType="INTEGER" />
+    <result column="UserNo" property="userno" jdbcType="VARCHAR" />
+    <result column="MeterNo" property="meterno" jdbcType="VARCHAR" />
+    <result column="MaxValue" property="maxvalue" jdbcType="INTEGER" />
+    <result column="VolumeId" property="volumeid" jdbcType="INTEGER" />
+    <result column="VolumeIndex" property="volumeindex" jdbcType="INTEGER" />
+    <result column="ReadEmpID" property="readempid" jdbcType="INTEGER" />
+    <result column="ReadDate" property="readdate" jdbcType="TIMESTAMP" />
+    <result column="PreValue" property="prevalue" jdbcType="INTEGER" />
+    <result column="Enter" property="enter" jdbcType="BIT" />
+    <result column="CurValue" property="curvalue" jdbcType="INTEGER" />
+    <result column="Dial" property="dial" jdbcType="BIT" />
+    <result column="Amount" property="amount" jdbcType="INTEGER" />
+    <result column="Formula" property="formula" jdbcType="VARCHAR" />
+    <result column="Audit" property="audit" jdbcType="BIT" />
+    <result column="AuditEmpID" property="auditempid" jdbcType="INTEGER" />
+    <result column="AuditDate" property="auditdate" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    RID, ReadYear, ReadMonth, UserNo, MeterNo, MaxValue, VolumeId, VolumeIndex, ReadEmpID, 
+    ReadDate, PreValue, Enter, CurValue, Dial, Amount, Formula, Audit, AuditEmpID, AuditDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from rd_read
+    where RID = #{rid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from rd_read
+    where RID = #{rid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zking.ssm.charge.model.Read" >
+    insert into rd_read (RID, ReadYear, ReadMonth, 
+      UserNo, MeterNo, MaxValue, 
+      VolumeId, VolumeIndex, ReadEmpID, 
+      ReadDate, PreValue, Enter, 
+      CurValue, Dial, Amount, 
+      Formula, Audit, AuditEmpID, 
+      AuditDate)
+    values (#{rid,jdbcType=INTEGER}, #{readyear,jdbcType=INTEGER}, #{readmonth,jdbcType=INTEGER}, 
+      #{userno,jdbcType=VARCHAR}, #{meterno,jdbcType=VARCHAR}, #{maxvalue,jdbcType=INTEGER}, 
+      #{volumeid,jdbcType=INTEGER}, #{volumeindex,jdbcType=INTEGER}, #{readempid,jdbcType=INTEGER}, 
+      #{readdate,jdbcType=TIMESTAMP}, #{prevalue,jdbcType=INTEGER}, #{enter,jdbcType=BIT}, 
+      #{curvalue,jdbcType=INTEGER}, #{dial,jdbcType=BIT}, #{amount,jdbcType=INTEGER}, 
+      #{formula,jdbcType=VARCHAR}, #{audit,jdbcType=BIT}, #{auditempid,jdbcType=INTEGER}, 
+      #{auditdate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zking.ssm.charge.model.Read" >
+    insert into rd_read
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="rid != null" >
+        RID,
+      </if>
+      <if test="readyear != null" >
+        ReadYear,
+      </if>
+      <if test="readmonth != null" >
+        ReadMonth,
+      </if>
+      <if test="userno != null" >
+        UserNo,
+      </if>
+      <if test="meterno != null" >
+        MeterNo,
+      </if>
+      <if test="maxvalue != null" >
+        MaxValue,
+      </if>
+      <if test="volumeid != null" >
+        VolumeId,
+      </if>
+      <if test="volumeindex != null" >
+        VolumeIndex,
+      </if>
+      <if test="readempid != null" >
+        ReadEmpID,
+      </if>
+      <if test="readdate != null" >
+        ReadDate,
+      </if>
+      <if test="prevalue != null" >
+        PreValue,
+      </if>
+      <if test="enter != null" >
+        Enter,
+      </if>
+      <if test="curvalue != null" >
+        CurValue,
+      </if>
+      <if test="dial != null" >
+        Dial,
+      </if>
+      <if test="amount != null" >
+        Amount,
+      </if>
+      <if test="formula != null" >
+        Formula,
+      </if>
+      <if test="audit != null" >
+        Audit,
+      </if>
+      <if test="auditempid != null" >
+        AuditEmpID,
+      </if>
+      <if test="auditdate != null" >
+        AuditDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="rid != null" >
+        #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="readyear != null" >
+        #{readyear,jdbcType=INTEGER},
+      </if>
+      <if test="readmonth != null" >
+        #{readmonth,jdbcType=INTEGER},
+      </if>
+      <if test="userno != null" >
+        #{userno,jdbcType=VARCHAR},
+      </if>
+      <if test="meterno != null" >
+        #{meterno,jdbcType=VARCHAR},
+      </if>
+      <if test="maxvalue != null" >
+        #{maxvalue,jdbcType=INTEGER},
+      </if>
+      <if test="volumeid != null" >
+        #{volumeid,jdbcType=INTEGER},
+      </if>
+      <if test="volumeindex != null" >
+        #{volumeindex,jdbcType=INTEGER},
+      </if>
+      <if test="readempid != null" >
+        #{readempid,jdbcType=INTEGER},
+      </if>
+      <if test="readdate != null" >
+        #{readdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="prevalue != null" >
+        #{prevalue,jdbcType=INTEGER},
+      </if>
+      <if test="enter != null" >
+        #{enter,jdbcType=BIT},
+      </if>
+      <if test="curvalue != null" >
+        #{curvalue,jdbcType=INTEGER},
+      </if>
+      <if test="dial != null" >
+        #{dial,jdbcType=BIT},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="formula != null" >
+        #{formula,jdbcType=VARCHAR},
+      </if>
+      <if test="audit != null" >
+        #{audit,jdbcType=BIT},
+      </if>
+      <if test="auditempid != null" >
+        #{auditempid,jdbcType=INTEGER},
+      </if>
+      <if test="auditdate != null" >
+        #{auditdate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zking.ssm.charge.model.Read" >
+    update rd_read
+    <set >
+      <if test="readyear != null" >
+        ReadYear = #{readyear,jdbcType=INTEGER},
+      </if>
+      <if test="readmonth != null" >
+        ReadMonth = #{readmonth,jdbcType=INTEGER},
+      </if>
+      <if test="userno != null" >
+        UserNo = #{userno,jdbcType=VARCHAR},
+      </if>
+      <if test="meterno != null" >
+        MeterNo = #{meterno,jdbcType=VARCHAR},
+      </if>
+      <if test="maxvalue != null" >
+        MaxValue = #{maxvalue,jdbcType=INTEGER},
+      </if>
+      <if test="volumeid != null" >
+        VolumeId = #{volumeid,jdbcType=INTEGER},
+      </if>
+      <if test="volumeindex != null" >
+        VolumeIndex = #{volumeindex,jdbcType=INTEGER},
+      </if>
+      <if test="readempid != null" >
+        ReadEmpID = #{readempid,jdbcType=INTEGER},
+      </if>
+      <if test="readdate != null" >
+        ReadDate = #{readdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="prevalue != null" >
+        PreValue = #{prevalue,jdbcType=INTEGER},
+      </if>
+      <if test="enter != null" >
+        Enter = #{enter,jdbcType=BIT},
+      </if>
+      <if test="curvalue != null" >
+        CurValue = #{curvalue,jdbcType=INTEGER},
+      </if>
+      <if test="dial != null" >
+        Dial = #{dial,jdbcType=BIT},
+      </if>
+      <if test="amount != null" >
+        Amount = #{amount,jdbcType=INTEGER},
+      </if>
+      <if test="formula != null" >
+        Formula = #{formula,jdbcType=VARCHAR},
+      </if>
+      <if test="audit != null" >
+        Audit = #{audit,jdbcType=BIT},
+      </if>
+      <if test="auditempid != null" >
+        AuditEmpID = #{auditempid,jdbcType=INTEGER},
+      </if>
+      <if test="auditdate != null" >
+        AuditDate = #{auditdate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where RID = #{rid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zking.ssm.charge.model.Read" >
+    update rd_read
+    set ReadYear = #{readyear,jdbcType=INTEGER},
+      ReadMonth = #{readmonth,jdbcType=INTEGER},
+      UserNo = #{userno,jdbcType=VARCHAR},
+      MeterNo = #{meterno,jdbcType=VARCHAR},
+      MaxValue = #{maxvalue,jdbcType=INTEGER},
+      VolumeId = #{volumeid,jdbcType=INTEGER},
+      VolumeIndex = #{volumeindex,jdbcType=INTEGER},
+      ReadEmpID = #{readempid,jdbcType=INTEGER},
+      ReadDate = #{readdate,jdbcType=TIMESTAMP},
+      PreValue = #{prevalue,jdbcType=INTEGER},
+      Enter = #{enter,jdbcType=BIT},
+      CurValue = #{curvalue,jdbcType=INTEGER},
+      Dial = #{dial,jdbcType=BIT},
+      Amount = #{amount,jdbcType=INTEGER},
+      Formula = #{formula,jdbcType=VARCHAR},
+      Audit = #{audit,jdbcType=BIT},
+      AuditEmpID = #{auditempid,jdbcType=INTEGER},
+      AuditDate = #{auditdate,jdbcType=TIMESTAMP}
+    where RID = #{rid,jdbcType=INTEGER}
+  </update>
+</mapper>

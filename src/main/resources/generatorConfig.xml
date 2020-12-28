@@ -13,7 +13,7 @@
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
         <!--数据库链接URL，用户名、密码 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/ssm?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false" userId="root"
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/bank?useUnicode=true&amp;characterEncoding=utf8&amp;useSSL=false" userId="root"
                         password="123">
         </jdbcConnection>
         <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
@@ -22,25 +22,56 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- 生成模型的包名和位置-->
-        <javaModelGenerator targetPackage="com.zking.ssm.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.zking.ssm.charge.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!-- 生成映射文件的包名和位置-->
-        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="mapper/charge" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 生成DAO的包名和位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.zking.ssm.mapper" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.zking.ssm.charge.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--注意 生成位置！-->
         <!--注意 生成位置！-->
-        <!--注意 生成位置！->
+        <!--注意 生成位置！-->
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
-        <!--<table tableName="t_book" domainObjectName="Book" enableCountByExample="false"
+        <!--<table tableName="py_bill" domainObjectName="Bill" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="py_balance" domainObjectName="Balance" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="py_balancedetail" domainObjectName="Balancedetail" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="py_billdetail" domainObjectName="Billdetail" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="py_pay" domainObjectName="Pay" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="py_sumreport" domainObjectName="Sumreport" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="py_userhistory" domainObjectName="Userhistory" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false"></table>-->
+
+        <!--<table tableName="iv_archive" domainObjectName="Archive" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="iv_ininvoice" domainObjectName="Ininvoice" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false"></table>-->
+        <!--<table tableName="iv_invoice" domainObjectName="Invoice" enableCountByExample="false"-->
+               <!--enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"-->
+               <!--selectByExampleQueryId="false"></table>-->
+        <table tableName="rd_read" domainObjectName="Read" enableCountByExample="false"
                enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false"
-               selectByExampleQueryId="false"></table>-->
+               selectByExampleQueryId="false"></table>
 
     </context>
 </generatorConfiguration>

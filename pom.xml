@@ -312,6 +312,13 @@
       <scope>provided</scope>
     </dependency>
 
+    <!--MD5所需要的hex包-->
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.6</version>
+    </dependency>
+
     <!--6.1 添加文件上传相关依赖-->
     <dependency>
       <groupId>commons-fileupload</groupId>

@@ -44,29 +44,28 @@
         <include refid="Base_Column_List"/>
         from us_user
         where
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="userno != null">
-                UserNo like concat("%",#{userno}"%")
-            </if>
-            <if test="abc != null">
-                ABC like concat("%",#{abc}"%")
-            </if>
-            <if test="smsphone != null">
-                SMSPhone like concat("%",#{smsphone}"%")
-            </if>
-            <if test="phone != null">
-                Phone like concat("%",#{phone}"%")
-            </if>
-            <if test="docnum != null">
-                DocNum like concat("%",#{docnum}"%")
-            </if>
-            <if test="username != null">
-                UserName like concat("%",#{username}"%")
-            </if>
-            <if test="address != null">
-                Address like concat("%",#{address}"%")
-            </if>
-        </trim>
+        Disabled NOT LIKE 1
+        <if test="userno != null and userno!='' ">
+            and UserNo like concat("%",#{userno}"%")
+        </if>
+        <if test="abc != null and abc!='' ">
+            and ABC like concat("%",#{abc}"%")
+        </if>
+        <if test="smsphone != null and smsphone!='' ">
+            and SMSPhone like concat("%",#{smsphone}"%")
+        </if>
+        <if test="phone != null and phone!='' ">
+            and Phone like concat("%",#{phone}"%")
+        </if>
+        <if test="docnum != null and docnum!='' ">
+            and DocNum like concat("%",#{docnum}"%")
+        </if>
+        <if test="username != null and username!='' ">
+            and UserName like concat("%",#{username}"%")
+        </if>
+        <if test="address != null and address!='' ">
+            and Address like concat("%",#{address}"%")
+        </if>
     </select>
     <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from us_user
